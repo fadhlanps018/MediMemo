@@ -10,6 +10,10 @@ data class MedicalRecord(
     val pelayananLain: String,
     val namaDokter: String
 )
+{
+    // Tambahkan konstruktor tanpa argumen
+    constructor() : this("", "", "", "", "","","","")
+}
 
 data class RacikanObat(
     val id: String,
@@ -17,18 +21,29 @@ data class RacikanObat(
     val obat1: String,
     val obat2: String,
     val obat3: String,
-)
+){
+    // Tambahkan konstruktor tanpa argumen
+    constructor() : this("", "", "", "", "")
+}
 
 data class Reminder (
     val id: String,
+    val title: String,
     val date: String,
     val time: String,
     val location: String,
     val color: String,
 )
+{
+    // Tambahkan konstruktor tanpa argumen
+    constructor() : this("", "", "", "", "","")
+}
 
-data class Vaksinasi (
+data class Vacsine (
     val id: String,
     val date: String,
     val location: String,
-)
+) {
+    // Tambahkan konstruktor tanpa argumen
+    constructor() : this("", "", "")
+}

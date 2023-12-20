@@ -13,28 +13,25 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.medimemo.R
-import com.medimemo.data.Reminder
 import com.medimemo.data.Vacsine
-import com.medimemo.databinding.FragmentHomeBinding
 import com.medimemo.databinding.FragmentReminderBinding
-import com.medimemo.ui.fragment.adapter.ReminderAdapter
+import com.medimemo.databinding.FragmentVacsineBinding
 import com.medimemo.ui.fragment.adapter.VacsineAdapter
-import com.medimemo.ui.swipeup.MedicalCheck
 import com.medimemo.ui.swipeup.ReminderAdd
+import com.medimemo.ui.swipeup.VacsineAdd
 
 
-class ReminderFragment : Fragment() {
-    private lateinit var binding: FragmentReminderBinding
+class VacsineFragment : Fragment() {
+    private lateinit var binding: FragmentVacsineBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
-    private lateinit var reminderList: ArrayList<Reminder>
-
+    private lateinit var vacsineList: ArrayList<Vacsine>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentReminderBinding.inflate(inflater, container, false)
+        binding = FragmentVacsineBinding.inflate(inflater, container, false)
 
         auth = FirebaseAuth.getInstance()
 
@@ -42,8 +39,10 @@ class ReminderFragment : Fragment() {
             .getInstance()
             .getReference("Vacsine")
             .child(auth.currentUser?.uid.toString())
-        reminderList = arrayListOf()
+        vacsineList = arrayListOf()
         fetchData()
+
+        showBottomSheet()
 
         binding.apply {
             var x = auth.currentUser?.displayName
@@ -55,7 +54,6 @@ class ReminderFragment : Fragment() {
             }
         }
 
-        showBottomSheet()
 
         return binding.root
     }
@@ -63,15 +61,15 @@ class ReminderFragment : Fragment() {
     private fun fetchData() {
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                reminderList.clear()
+                vacsineList.clear()
                 if (snapshot.exists()) {
                     for (imtSnap in snapshot.children) {
-                        val reminder = imtSnap.getValue(Reminder::class.java)
-                        reminderList.add(reminder!!)
+                        val vacsines = imtSnap.getValue(Vacsine::class.java)
+                        vacsineList.add(vacsines!!)
                     }
                 }
-                val reminderAdapter = ReminderAdapter(reminderList)
-                binding.recyclerView.adapter = reminderAdapter
+                val vacsinesAdapter = VacsineAdapter(vacsineList)
+                binding.recyclerView.adapter = vacsinesAdapter
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -82,7 +80,7 @@ class ReminderFragment : Fragment() {
     }
 
     private fun showBottomSheet() {
-        val bottomSheetFragment = ReminderAdd()
+        val bottomSheetFragment = VacsineAdd()
         bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
     }
 }

@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.medimemo.R
 import com.medimemo.databinding.FragmentHomeBinding
 import com.medimemo.databinding.FragmentMedicineBinding
@@ -23,12 +27,31 @@ private const val ARG_PARAM2 = "param2"
  */
 class MedicineFragment : Fragment() {
     private lateinit var binding: FragmentMedicineBinding
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMedicineBinding.inflate(inflater, container, false)
+
+        auth = FirebaseAuth.getInstance()
+
+        db = FirebaseDatabase
+            .getInstance()
+            .getReference("Medicine")
+            .child(auth.currentUser?.uid.toString())
+
+
+        binding.apply {
+            var x = auth.currentUser?.displayName
+            tvNama.text = "Selamat Datang $x"
+
+            rvMedicine.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(this.context)
+            }
+        }
 
         showBottomSheet()
 

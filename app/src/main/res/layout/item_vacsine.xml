@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_shape">
+
+    <ImageView
+        android:id="@+id/img_v"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/baseline_vaccines_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_title_v"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/baseline_calendar_month_24"
+        app:layout_constraintStart_toEndOf="@+id/img_v"
+        app:layout_constraintTop_toTopOf="@+id/img_v" />
+
+    <TextView
+        android:id="@+id/tv_title_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/date"
+        android:textColor="@color/white"
+        android:textSize="3pt"
+        app:layout_constraintBottom_toBottomOf="@+id/img_title_v"
+        app:layout_constraintStart_toEndOf="@+id/img_title_v"
+        app:layout_constraintTop_toTopOf="@+id/img_title_v" />
+
+    <ImageView
+        android:id="@+id/img_location_r"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/baseline_location_on_24"
+        app:layout_constraintBottom_toBottomOf="@+id/img_v"
+        app:layout_constraintStart_toEndOf="@+id/img_v" />
+
+    <TextView
+        android:id="@+id/tv_loc_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/date"
+        android:textColor="@color/white"
+        android:textSize="3pt"
+        app:layout_constraintBottom_toBottomOf="@+id/img_location_r"
+        app:layout_constraintStart_toEndOf="@+id/img_location_r"
+        app:layout_constraintTop_toTopOf="@+id/img_location_r" />
+</androidx.constraintlayout.widget.ConstraintLayout>

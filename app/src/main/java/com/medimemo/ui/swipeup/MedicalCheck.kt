@@ -70,7 +70,6 @@ class MedicalCheck : BottomSheetDialogFragment() {
         }
     }
 
-
     private fun pushData(medicalCheck: MedicalRecord) {
         db = FirebaseDatabase.getInstance().getReference("Medical_Check").child(auth.currentUser?.uid.toString()).child(medicalCheck.id)
 

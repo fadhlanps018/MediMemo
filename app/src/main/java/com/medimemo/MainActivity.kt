@@ -7,6 +7,8 @@ import com.medimemo.databinding.ActivityMainBinding
 import com.medimemo.ui.fragment.HomeFragment
 import com.medimemo.ui.fragment.MedicineFragment
 import com.medimemo.ui.fragment.ReminderFragment
+import com.medimemo.ui.fragment.VacsineFragment
+import com.medimemo.ui.swipeup.VacsineAdd
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.fiture2 -> replaceFragment(MedicineFragment())
                 R.id.fiture3 -> replaceFragment(ReminderFragment())
-                R.id.fiture4 -> replaceFragment(fiture4())
+                R.id.fiture4 -> replaceFragment(VacsineFragment())
 
             }
             true
