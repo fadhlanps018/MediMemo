@@ -3,6 +3,7 @@ package com.medimemo.ui.fragment.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.medimemo.data.MedicalRecord
 import com.medimemo.data.RacikanObat
 import com.medimemo.data.Reminder
 import com.medimemo.data.Vacsine
@@ -11,7 +12,7 @@ import com.medimemo.databinding.ItemReminderBinding
 import com.medimemo.databinding.ItemVacsineBinding
 import com.medimemo.ui.swipeup.MedicalCheck
 
-class HomeAdapter (private val medicineList: ArrayList<MedicalCheck>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter (private val medicineList: ArrayList<MedicalRecord>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     class ViewHolder(val binding: ItemCheckBinding): RecyclerView.ViewHolder(binding.root)
 
 
@@ -27,7 +28,7 @@ class HomeAdapter (private val medicineList: ArrayList<MedicalCheck>): RecyclerV
         val currentItem = medicineList[position]
         holder.apply {
             binding.apply {
-                tvTitleAll.text = "TEsting"
+                tvTitleAll.text = currentItem.anamesis
             }
         }
     }

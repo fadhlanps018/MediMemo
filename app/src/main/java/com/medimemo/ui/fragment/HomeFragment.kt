@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.medimemo.data.MedicalRecord
 import com.medimemo.data.RacikanObat
 import com.medimemo.data.Reminder
 import com.medimemo.databinding.FragmentHomeBinding
@@ -26,7 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
-    private lateinit var medicalList: ArrayList<MedicalCheck>
+    private lateinit var medicalList: ArrayList<MedicalRecord>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,7 +65,7 @@ class HomeFragment : Fragment() {
                 medicalList.clear()
                 if (snapshot.exists()) {
                     for (imtSnap in snapshot.children) {
-                        val reminder = imtSnap.getValue(MedicalCheck::class.java)
+                        val reminder = imtSnap.getValue(MedicalRecord::class.java)
                         medicalList.add(reminder!!)
                     }
                 }
