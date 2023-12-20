@@ -36,7 +36,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include
-        layout="@layout/activity_swipefiture" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -114,8 +114,6 @@ class SignInActivity : AppCompatActivity() {
                 val account = result.signInAccount
                 firebaseAuthWithGoogle(account!!)
             } else {
-                // Sign-in gagal, mungkin pengguna membatalkan atau terjadi kesalahan
-                // Penanganan kesalahan dapat dilakukan di sini
                 Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show()
             }
         }
