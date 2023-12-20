@@ -38,10 +38,11 @@ class HomeFragment : Fragment() {
 
         db = FirebaseDatabase
             .getInstance()
-            .getReference("Medical_Reminder")
+            .getReference("Medical_Check")
             .child(auth.currentUser?.uid.toString())
-
+        medicalList = arrayListOf()
         fetchData()
+
 
         binding.apply {
             var x = auth.currentUser?.displayName
