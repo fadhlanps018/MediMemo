@@ -56,7 +56,7 @@ class ReminderAdd : BottomSheetDialogFragment() {
                 val id = db.database.getReference("Reminder").push().key.toString()
                 val location = edtLocation.text.toString()
                 val color = edtColor.text.toString()
-                val title = edtPengingat.toString()
+                val title = edtPengingat.text.toString()
                 // Format selectedDate and selectedTime to strings
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())

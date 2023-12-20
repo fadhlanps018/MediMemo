@@ -40,7 +40,7 @@ class ReminderFragment : Fragment() {
 
         db = FirebaseDatabase
             .getInstance()
-            .getReference("Vacsine")
+            .getReference("Reminder")
             .child(auth.currentUser?.uid.toString())
         reminderList = arrayListOf()
         fetchData()

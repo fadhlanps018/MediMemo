@@ -47,3 +47,4 @@ data class Vacsine (
     // Tambahkan konstruktor tanpa argumen
     constructor() : this("", "", "")
 }
+

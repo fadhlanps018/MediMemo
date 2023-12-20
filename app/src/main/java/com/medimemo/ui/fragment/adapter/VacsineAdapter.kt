@@ -4,14 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medimemo.data.Vacsine
+import com.medimemo.databinding.ItemCheckBinding
 import com.medimemo.databinding.ItemVacsineBinding
 
 class VacsineAdapter (private val vacsineList: ArrayList<Vacsine>): RecyclerView.Adapter<VacsineAdapter.ViewHolder>() {
-    class ViewHolder(val binding: ItemVacsineBinding): RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemCheckBinding): RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemVacsineBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(ItemCheckBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {
@@ -22,8 +23,7 @@ class VacsineAdapter (private val vacsineList: ArrayList<Vacsine>): RecyclerView
         val currentItem = vacsineList[position]
         holder.apply {
             binding.apply {
-                tvLocV.text = currentItem.location
-                tvTitleV.text = currentItem.date
+                tvTitleAll.text = currentItem.date
             }
         }
     }
